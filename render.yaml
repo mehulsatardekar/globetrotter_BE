@@ -2,9 +2,10 @@ services:
   - type: web
     name: globetrotter-api
     env: node
-    region: singapore # or your preferred region
-    buildCommand: cd /opt/render/project/src && npm install && npm run build
-    startCommand: cd /opt/render/project/src && node dist/index.js
+    region: singapore
+    rootDir: .
+    buildCommand: npm install && npm run build
+    startCommand: npm start
     envVars:
       - key: NODE_ENV
         value: production
@@ -13,5 +14,5 @@ services:
       - key: SUPABASE_KEY
         sync: false
     healthCheckPath: /api/health
-    plan: free # Specify the free tier
-    instance: basic # Use the basic instance type
+    plan: free
+    instance: basic
