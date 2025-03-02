@@ -13,3 +13,5 @@ services:
       - key: SUPABASE_KEY
         sync: false
     healthCheckPath: /api/health
+    plan: free  # Specify the free tier
+    instance: basic  # Use the basic instance type
