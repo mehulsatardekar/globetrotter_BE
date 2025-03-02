@@ -3,9 +3,8 @@ services:
     name: globetrotter-api
     env: node
     region: singapore
-    rootDir: .
     buildCommand: npm install && npm run build
-    startCommand: npm start
+    startCommand: cd dist && node index.js
     envVars:
       - key: NODE_ENV
         value: production
