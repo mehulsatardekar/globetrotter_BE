@@ -20,6 +20,27 @@ export class UserController {
     }
   };
 
+  getUsersPreviousGameSession: RequestHandler = async (req, res) => {
+    try {
+      const { userID } = req.query;
+
+      const {data} = await supabase.from("game_sessions").select("id").eq("user_id", userID);
+      console.log("data", data)
+
+      // const { data } = await supabase
+      //   .from("users")
+      //   .select("id")
+      //   .eq("username", userID)
+      //   .single();
+      res.json({
+        userSesssions: data || []
+      })
+    
+    } catch (error) {
+      //res.status(500).json({ error: "Failed to check username" });
+    }
+  }; 
+
   registerUser: RequestHandler = async (req, res): Promise<void> => {
     try {
       console.log("Registering user with data:", req.body);
